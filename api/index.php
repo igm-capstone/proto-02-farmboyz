@@ -7,6 +7,7 @@
  * PSR-4 autoloader.
  */
 require 'vendor/autoload.php';
+require 'api.php';
 
 /**
  * Step 2: Instantiate a Slim application
@@ -29,6 +30,12 @@ $app->response->headers->set('Content-Type', 'application/json');
  */
 $app->get('/hello/:name', function ($name) {
     echo json_encode(array("Hello, $name"));
+});
+
+
+$app->get('/item', function() {
+    $item = new Item();
+    $item->listItems();
 });
 
 /**
